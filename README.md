@@ -6,6 +6,9 @@ A messy-ass library I'm not as yet too keen to organize.
 
 **Download the full David Blue Siri Shortcuts Suite™**
 - [Telegram](https://t.me/extratone/10876)
+- [.zip (iCloud Drive)](https://www.icloud.com/iclouddrive/090WZyVe9rGUJA_6MYUtA1Mdg#DavidBlueFullShortcutsSuite03312022-225743)
+- [.tar (iCloud Drive)](https://www.icloud.com/iclouddrive/055HG3do68dvVwLyqNmPeCBGw#DavidBlueFullShortcutsSuite03312022-225658)
+- [.7z (iCloud Drive)](https://www.icloud.com/iclouddrive/08amblz4oVhB71NErt_qIDQHQ#DavidBlueFullShortcutsSuite03312022-225936)
 
 
 ---
