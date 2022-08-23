@@ -2,7 +2,31 @@
 
 # David Blue's Siri Shortcuts
 
-A messy-ass library I'm not as yet too keen to organize. 
+A messy-ass library I'm not as yet too keen to organize, along with related indicies/links of mine.
+
+## Writing about Shortcuts
+
+- [Automating Write.as Posts on macOS](https://bilge.world/automating-writeas-posts)
+- [How I Maintain a Vocabulary List in Drafts with Terminology](https://bilge.world/drafts-terminology-vocabulary)
+- [Marco! Lives](https://bilge.world/marco)
+- [Profound Revelations in iOS 12](https://bilge.world/siri-shortcuts-ios12-review)
+- [Quick Key Command Formatting with ksc and Siri Shortcuts](https://bilge.world/ksc-shortcut)
+- [Retrieve Live NPR Program Information with Siri Shortcuts](https://bilge.world/npr-siri-shortcuts)
+- [Run Siri Shortcuts with Hyperlinks](https://bilge.world/run-siri-shortcuts-with-hyperlinks)
+- [Siri Shortcuts and the DJ Screw Discography](https://bilge.world/dj-screw-shortcuts)
+- [Siri Speech Synthesis in iOS 15](https://bilge.world/siri-tts)
+- [Speedy Frames](https://bilge.world/speedy-frames)
+- [Telegram Extras](https://bilge.world/telegram-extras)
+- [The Fastest Route to Twitter Jail](https://bilge.world/twitter-jail)
+- [Using Drafts with NeoCities](https://bilge.world/using-drafts-with-neocities)
+
+## My Shortcuts-related GitHub Repositories.
+
+- [i](https://github.com/extratone/i)
+- [routinehub](https://github.com/extratone/routinehub)
+- [capture](https://github.com/extratone/capture)
+- [scrubs](https://github.com/extratone/scrubs) 
+- [jellycuts](https://github.com/extratone/jellycuts)
 
 **Download the full David Blue Siri Shortcuts Suite™**
 - [Telegram](https://t.me/extratone/10876)
