@@ -6,6 +6,12 @@ A messy-ass library I'm not as yet too keen to organize, along with related indi
 
 Here's [**a raw index**](https://github.com/extratone/shortcuts/blob/main/signedindex.md) of hyperlinks directly to signed, downloadable shortcuts files.
 
+## Siri Shortcuts Raindrop Collection
+
+A [beautifully-presented collection](https://raindrop.io/davidblue/siri-shortcuts-21598130) of Shortcuts share links and links to select Shortcuts-related reading.
+
+<iframe style="border: 0; width: 100%; height: 650px;" allowfullscreen frameborder="0" src="https://raindrop.io/davidblue/siri-shortcuts-21598130/embed/sort=-created&hide=header%2C+excerpt%2C+info%2C+add"></iframe>
+
 ## Writing about Shortcuts
 
 - [Automating Write.as Posts on macOS](https://bilge.world/automating-writeas-posts)
@@ -41,6 +47,7 @@ Here's [**a raw index**](https://github.com/extratone/shortcuts/blob/main/signed
 
 ## Third Party Resources
 
-- [Apple Shortcuts Twitter Community](https://twitter.com/i/communities/1471151406451085313)
-- Shortcuts.Directory
+- [Apple Shortcuts Twitter Community](https://twitter.com/i/communities/1471151406451085313) 
+- [**RoutineHub**](https://routinehub.co)
+- [Shortcuts.Directory](https://shortcuts.directory) 
 - [Shortcuts Facebook Group](https://www.facebook.com/groups/1348338781970212)
