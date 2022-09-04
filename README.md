@@ -4,6 +4,8 @@
 
 A messy-ass library I'm not as yet too keen to organize, along with related indicies/links of mine.
 
+Here's [**a raw index**](https://github.com/extratone/shortcuts/blob/main/signedindex.md) of hyperlinks directly to signed, downloadable shortcuts files.
+
 ## Writing about Shortcuts
 
 - [Automating Write.as Posts on macOS](https://bilge.world/automating-writeas-posts)
@@ -13,7 +15,7 @@ A messy-ass library I'm not as yet too keen to organize, along with related indi
 - [Quick Key Command Formatting with ksc and Siri Shortcuts](https://bilge.world/ksc-shortcut)
 - [Retrieve Live NPR Program Information with Siri Shortcuts](https://bilge.world/npr-siri-shortcuts)
 - [Run Siri Shortcuts with Hyperlinks](https://bilge.world/run-siri-shortcuts-with-hyperlinks)
-- [Siri Shortcuts and the DJ Screw Discography](https://bilge.world/dj-screw-shortcuts)
+- [Siri Shortcuts and the DJ Screw Discography](**https://bilge.world/dj-screw-shortcuts**)
 - [Siri Speech Synthesis in iOS 15](https://bilge.world/siri-tts)
 - [Speedy Frames](https://bilge.world/speedy-frames)
 - [Telegram Extras](https://bilge.world/telegram-extras)
