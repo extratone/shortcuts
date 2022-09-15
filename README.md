@@ -49,5 +49,6 @@ A [beautifully-presented collection](https://raindrop.io/davidblue/siri-shortcut
 
 - [Apple Shortcuts Twitter Community](https://twitter.com/i/communities/1471151406451085313) 
 - [**RoutineHub**](https://routinehub.co)
+- [A Static Archive of RoutineHub](https://easrng.github.io/routinehub-archive/)
 - [Shortcuts.Directory](https://shortcuts.directory) 
 - [Shortcuts Facebook Group](https://www.facebook.com/groups/1348338781970212)
