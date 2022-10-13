@@ -1,0 +1,236 @@
+{
+	"WFWorkflowMinimumClientVersionString": "900",
+	"WFWorkflowMinimumClientVersion": 900,
+	"WFWorkflowIcon": {
+		"WFWorkflowIconStartColor": 4274264319,
+		"WFWorkflowIconGlyphNumber": 59835
+	},
+	"WFWorkflowClientVersion": "1206.4.3",
+	"WFWorkflowOutputContentItemClasses": [],
+	"WFWorkflowHasOutputFallback": false,
+	"WFWorkflowActions": [
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.comment",
+			"WFWorkflowActionParameters": {
+				"WFCommentActionText": "I created this shortcut as part of an advanced wake up alarm/siri shortcuts automation. \n\n(See [my original Twitter video demo](https://twitter.com/NeoYokel/status/1360467218497220609).)\n\n***\n\n## Functions\n**A spoken summary of current and expected weather conditions for the day as per your current location.**\n\n1. Reads current temperature\n2. Reads current sky conditions\n3. Reads expected **high** temperature for the day\n4. Reads expected **low** temperature for the day\n5. Reads sunrise time for the day\n6. Reads sunset time for the day\n\nMy line is open any time if you have suggestions/feedback/feel like harassing someone for an unrelated reason.\n* +1 (573) 823-4380\n* davidblue@extratone.com\n* Support Discord Channel: https://bit.ly/extoracle"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.weather.currentconditions",
+			"WFWorkflowActionParameters": {
+				"UUID": "0F211440-0140-4E03-B2CA-8794A6117E43"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.gettext",
+			"WFWorkflowActionParameters": {
+				"WFTextActionText": {
+					"Value": {
+						"string": "Currently, it is \uFFFC.",
+						"attachmentsByRange": {
+							"{17, 1}": {
+								"OutputUUID": "0F211440-0140-4E03-B2CA-8794A6117E43",
+								"Type": "ActionOutput",
+								"OutputName": "Weather Conditions"
+							}
+						}
+					},
+					"WFSerializationType": "WFTextTokenString"
+				},
+				"UUID": "CEAC8725-4375-4DC8-91CE-78CF52D8F192"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.speaktext",
+			"WFWorkflowActionParameters": {
+				"WFSpeakTextVoice": "com.apple.ttsbundle.gryphon-neural_simone_en-US_premium",
+				"WFText": {
+					"Value": {
+						"string": "\uFFFC",
+						"attachmentsByRange": {
+							"{0, 1}": {
+								"OutputUUID": "CEAC8725-4375-4DC8-91CE-78CF52D8F192",
+								"Type": "ActionOutput",
+								"OutputName": "Text"
+							}
+						}
+					},
+					"WFSerializationType": "WFTextTokenString"
+				}
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.weather.forecast",
+			"WFWorkflowActionParameters": {
+				"WFWeatherForecastType": "Daily",
+				"UUID": "9412CF53-EB51-48D3-8080-8E2182D1A3E7"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.getitemfromlist",
+			"WFWorkflowActionParameters": {
+				"WFInput": {
+					"Value": {
+						"OutputUUID": "9412CF53-EB51-48D3-8080-8E2182D1A3E7",
+						"Type": "ActionOutput",
+						"OutputName": "Weather Conditions"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				},
+				"UUID": "E89AC6F3-3BB5-411C-9C2C-071821CD45FB"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.properties.weather.conditions",
+			"WFWorkflowActionParameters": {
+				"WFInput": {
+					"Value": {
+						"OutputUUID": "E89AC6F3-3BB5-411C-9C2C-071821CD45FB",
+						"Type": "ActionOutput",
+						"OutputName": "Item from List"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				},
+				"WFContentItemPropertyName": "High",
+				"UUID": "D85B25B4-AC37-41F9-924B-44F65114F43B"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.properties.weather.conditions",
+			"WFWorkflowActionParameters": {
+				"WFInput": {
+					"Value": {
+						"OutputUUID": "E89AC6F3-3BB5-411C-9C2C-071821CD45FB",
+						"Type": "ActionOutput",
+						"OutputName": "Item from List"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				},
+				"WFContentItemPropertyName": "Low",
+				"UUID": "F1BCBDFA-934C-4B8D-97A2-4F873CAF181F"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.properties.weather.conditions",
+			"WFWorkflowActionParameters": {
+				"WFInput": {
+					"Value": {
+						"OutputUUID": "E89AC6F3-3BB5-411C-9C2C-071821CD45FB",
+						"Type": "ActionOutput",
+						"OutputName": "Item from List"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				},
+				"WFContentItemPropertyName": "Sunrise Time",
+				"UUID": "74CA3741-6AB0-4FB6-8BCA-0B244C3FF583"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.properties.weather.conditions",
+			"WFWorkflowActionParameters": {
+				"WFInput": {
+					"Value": {
+						"OutputUUID": "E89AC6F3-3BB5-411C-9C2C-071821CD45FB",
+						"Type": "ActionOutput",
+						"OutputName": "Item from List"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				},
+				"WFContentItemPropertyName": "Sunset Time",
+				"UUID": "46ECA911-0B9A-4D4C-95F1-BC9BFE67F51F"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.gettext",
+			"WFWorkflowActionParameters": {
+				"WFTextActionText": {
+					"Value": {
+						"string": "Today's high is \uFFFC and expected low is \uFFFC.;\n\nSunrise was at \uFFFC. Sunset will be at \uFFFC.\n\n",
+						"attachmentsByRange": {
+							"{79, 1}": {
+								"Type": "ActionOutput",
+								"OutputName": "Sunset Time",
+								"OutputUUID": "46ECA911-0B9A-4D4C-95F1-BC9BFE67F51F",
+								"Aggrandizements": [
+									{
+										"WFDateFormatStyle": "None",
+										"WFISO8601IncludeTime": false,
+										"Type": "WFDateFormatVariableAggrandizement",
+										"WFTimeFormatStyle": "Short"
+									}
+								]
+							},
+							"{58, 1}": {
+								"Type": "ActionOutput",
+								"OutputName": "Sunrise Time",
+								"OutputUUID": "74CA3741-6AB0-4FB6-8BCA-0B244C3FF583",
+								"Aggrandizements": [
+									{
+										"WFDateFormatStyle": "None",
+										"WFISO8601IncludeTime": false,
+										"Type": "WFDateFormatVariableAggrandizement",
+										"WFTimeFormatStyle": "Short"
+									}
+								]
+							},
+							"{16, 1}": {
+								"OutputUUID": "D85B25B4-AC37-41F9-924B-44F65114F43B",
+								"Type": "ActionOutput",
+								"OutputName": "High"
+							},
+							"{38, 1}": {
+								"OutputUUID": "F1BCBDFA-934C-4B8D-97A2-4F873CAF181F",
+								"Type": "ActionOutput",
+								"OutputName": "Low"
+							}
+						}
+					},
+					"WFSerializationType": "WFTextTokenString"
+				},
+				"UUID": "C2D08255-DB36-456F-8699-F573E225EE29"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.speaktext",
+			"WFWorkflowActionParameters": {
+				"WFSpeakTextVoice": "com.apple.ttsbundle.gryphon-neural_simone_en-US_premium",
+				"WFText": {
+					"Value": {
+						"string": "\uFFFC",
+						"attachmentsByRange": {
+							"{0, 1}": {
+								"OutputUUID": "C2D08255-DB36-456F-8699-F573E225EE29",
+								"Type": "ActionOutput",
+								"OutputName": "Text"
+							}
+						}
+					},
+					"WFSerializationType": "WFTextTokenString"
+				}
+			}
+		}
+	],
+	"WFWorkflowInputContentItemClasses": [
+		"WFAppStoreAppContentItem",
+		"WFArticleContentItem",
+		"WFContactContentItem",
+		"WFDateContentItem",
+		"WFEmailAddressContentItem",
+		"WFGenericFileContentItem",
+		"WFImageContentItem",
+		"WFiTunesProductContentItem",
+		"WFLocationContentItem",
+		"WFDCMapsLinkContentItem",
+		"WFAVAssetContentItem",
+		"WFPDFContentItem",
+		"WFPhoneNumberContentItem",
+		"WFRichTextContentItem",
+		"WFSafariWebPageContentItem",
+		"WFStringContentItem",
+		"WFURLContentItem"
+	],
+	"WFWorkflowImportQuestions": [],
+	"WFWorkflowTypes": [],
+	"WFQuickActionSurfaces": [],
+	"WFWorkflowHasShortcutInputVariables": false
+}

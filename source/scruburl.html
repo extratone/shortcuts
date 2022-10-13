@@ -1,0 +1,260 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="format-detection" content="telephone=no,date=no">
+<title>ScrubUrl</title>
+<style>
+body {
+	font-family: system-ui;
+	margin-top: 1rem;
+	margin-bottom: calc(1rem + env(safe-area-inset-bottom));
+	word-break: break-word;
+}
+
+button {
+	color: #000;
+	background-color: #e4e4ff;
+	width: 100%;
+	font-size: 1em;
+	font-weight: normal;
+	line-height: 1.8;
+	text-align: left;
+	padding: 3px 10px;
+	margin: 5px 0;
+	border: 1px #aaa;
+	border-style: solid;
+	border-radius: 8px;
+	cursor: initial;
+	touch-action: manipulation;
+}
+
+.button {
+	margin-bottom: 0;
+	border-bottom-style: none;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	cursor: auto;
+}
+.button::after {
+	content: '\25A1';
+	float: right;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.closed {
+	margin-bottom: 5px;
+	border-bottom-style: solid;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+.closed::after { content: '\2212'; }
+
+.nonbottom {
+	margin-bottom: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-style: none;
+}
+.nontop {
+	margin-top: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.gLoop { background-color: #e0e0e0; }
+.gScripting { background-color: #ddffdd; }
+.gDocuments { background-color: #ffeebb; }
+.gVariable { background-color: #ffddcc; }
+.gUnknown { background-color: #bbffff; }
+.gParams {
+	text-align: center;
+	background-color: #f8f8f8;
+}
+
+.content {
+	overflow: hidden;
+	padding: 5px 0 5px 10px;
+	margin-bottom: 5px;
+	border: 1px #aaa;
+	border-style: none solid solid solid;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.contentloop {
+	padding-top: 5px;
+	margin-bottom: 0;
+	border-bottom-style: none;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.dashed { border-left-style: dashed; }
+
+.inside {
+	border-right-style: none;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.commentcontent { background-color: #fff8dd; }
+
+.row { display: flex; }
+
+.col1 {
+	padding-right: 5px;
+	margin-right: 5px;
+	border-right-style: double;
+}
+.col2 { white-space: pre-wrap; }
+
+span.box {
+	display: inline;
+	padding: 3px 5px;
+	margin: 0 2px;
+	border-radius: 8px;
+	background-color: #fff;
+}
+span.var { font-style: italic; }
+span.magic {
+	cursor: pointer;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+	body { background: #000; color: #eee; }
+	button { background: #404060; color: #eee; }
+	.gLoop { background-color: #404040; }
+	.gScripting { background-color: #305030; }
+	.gDocuments { background-color: #505020; }
+	.gVariable { background-color: #503030; }
+	.gUnknown { background-color: #205050; }
+	.gParams { background-color: #181818; }
+	.commentcontent { background-color: #505020; }
+	span.box { background-color: #000; }
+}
+</style></head><body>
+<button class="button gParams">ScrubUrl</button>
+<div class="content"><div class="col2">"WFQuickActionSurfaces": [],
+"WFWorkflowClientVersion": "1206.4.3",
+"WFWorkflowHasOutputFallback": false,
+"WFWorkflowHasShortcutInputVariables": true,
+"WFWorkflowIcon": {
+   "WFWorkflowIconStartColor": 463140863,
+   "WFWorkflowIconGlyphNumber": 59804
+},
+"WFWorkflowImportQuestions": [],
+"WFWorkflowInputContentItemClasses": [
+   "WFiTunesProductContentItem",
+   "WFAppStoreAppContentItem",
+   "WFDateContentItem",
+   "WFPhoneNumberContentItem",
+   "WFEmailAddressContentItem",
+   "WFContactContentItem",
+   "WFLocationContentItem",
+   "WFDCMapsLinkContentItem",
+   "WFArticleContentItem",
+   "WFURLContentItem",
+   "WFSafariWebPageContentItem",
+   "WFRichTextContentItem",
+   "WFStringContentItem"
+],
+"WFWorkflowMinimumClientVersion": 1113,
+"WFWorkflowMinimumClientVersionString": "1113",
+"WFWorkflowNoInputBehavior": {
+   "Name": "WFWorkflowNoInputBehaviorGetClipboard",
+   "Parameters": {}
+},
+"WFWorkflowOutputContentItemClasses": [],
+"WFWorkflowTypes": [
+   "ReceivesOnScreenContent"
+]
+</div></div>
+
+<button class="button gDocuments" id="m0">
+0 Comment</button>
+	<div class="content commentcontent">
+		<div class="col2">## A simple utility for cleaning unnecessary information (? and what‘s after it) from a URL.
+
+## About
+
+Unfortunately, this is *not* the Ultimate Link Cleaner utility I have aspired to make for as long as I‘ve curated web content in various forms, but it will at least reliably perform one function: removing “tracking“ metadata (? and the stuff after it) by disassembling a given URL and reassembling *only* the host and the path. That‘s it. It will *not* function if redirection is involved.
+
+### Functions
+
+**As configured by default... **(Subject to your preference!)
+
+1. Retrieves current clipboard
+2. Finds the host (host.com) in the URL
+3. Finds the path (/path) in the URL
+4. Combines the raw text of the host and the path to (hopefully) form a link without a scheme (host.com/path)
+5. Recognizes this raw text as a real URL, adding a scheme (http://host.com/path.)
+6. Copies the result to the clipboard
+
+My line is open any time if you have suggestions/feedback/feel like harassing someone for an unrelated reason:
+
+## Contact
+
+* [Email](mailto:davidblue@extratone.com) 
+* [Twitter](https://twitter.com/NeoYokel)
+* [Mastodon](https://mastodon.social/@DavidBlue)
+* [Discord](https://discord.gg/0b9KQUKP858b0iZF)
+* [*Everywhere*](https://www.notion.so/rotund/9fdc8e9610b34b8f991ebc148b760055?v=c170b58650c04fbdb7adc551a73d16a7)...</div></div>
+<button class="" id="m1">
+1 Get <span class="box">Host</span> of URL <span class="box"><span class="var"><b>[Shortcut Input]</b></span></span>&#12288;&#187; <span class="magic" onclick="magictap(3)">3</span></button>
+<button class="" id="m2">
+2 Get <span class="box">Path</span> of URL <span class="box"><span class="var"><b>[Shortcut Input]</b></span></span>&#12288;&#187; <span class="magic" onclick="magictap(4)">4</span></button>
+<button class="gDocuments" id="m3">
+3 Get Text from <span class="box"><span class="magic" onclick="magictap(1)"><b>[1 Component of URL]</b></span></span>&#12288;&#187; <span class="magic" onclick="magictap(5)">5</span></button>
+<button class="gDocuments" id="m4">
+4 Get Text from <span class="box"><span class="magic" onclick="magictap(2)"><b>[2 Component of URL]</b></span></span>&#12288;&#187;</button>
+<button class="button gDocuments" id="m5">
+5 Text&#12288;&#187;</button>
+	<div class="content">
+		<div class="col2"><span class="magic" onclick="magictap(3)"><b>[3 Text]</b></span><span class="var"><b>[4 Text]</b></span></div></div>
+<button class="button " id="m6">
+6 URL <span class="box"><span class="var"><b>[5 Text]</b></span></span>&#12288;&#187; <i>7</i> <span class="magic" onclick="magictap(8)">8</span></button>
+	<div class="content">
+		<div class="row"><div class="col1">Show-WFURLActionURL</div>
+			<div class="col2">true</div></div></div>
+<button class="" id="m7">
+7 Copy <span class="box"><span class="var"><b>[6 URL]</b></span></span> to Clipboard</button>
+<button class="button gUnknown closed" id="m8">
+8 com.ameba.anybuffer.AddURLIntent</button>
+	<div class="content" style="display:none">
+		<div class="row"><div class="col1">shelf</div>
+			<div class="col2">{  "displayImage": {
+      "type": "Data",
+      "imageData": "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"
+   },
+   "sortOrder": "By Name",
+   "subtitleString": "Number of items: 15",
+   "numberOfItems": 15,
+   "uuid": "0B5A65C4-2BFC-462D-91D4-B8B2DDC6AFF8",
+   "identifier": "0B5A65C4-2BFC-462D-91D4-B8B2DDC6AFF8",
+   "displayString": "Library"
+}</div></div>
+		<div class="row"><div class="col1">url</div>
+			<div class="col2"><span class="magic" onclick="magictap(6)"><b>[6 URL]</b></span></div></div>
+		<div class="row"><div class="col1">ShowWhenRun</div>
+			<div class="col2">false</div></div></div>
+<script>
+for (b of document.getElementsByClassName('button')) {
+	b.addEventListener('click', function() {
+		this.classList.toggle('closed');
+		let s = this.nextElementSibling;
+		s.style.display = getComputedStyle(s).display==='none' ? 'block' : 'none';
+})}
+
+function magictap(id) {
+	event.stopPropagation();
+	let e = document.getElementById('m'+id);
+	let p = e;
+	while ((p = p.parentNode).tagName.toLowerCase() === 'div') {
+		p.style.display = 'block';
+		p.previousElementSibling.classList.remove('closed');
+	}
+	setTimeout(function(){ e.scrollIntoView({block:'nearest',behavior:'smooth'}); }, 10);
+}
+</script></body></html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="format-detection" content="telephone=no,date=no">
+<title>Mastgur</title>
+<style>
+body {
+	font-family: system-ui;
+	margin-top: 1rem;
+	margin-bottom: calc(1rem + env(safe-area-inset-bottom));
+	word-break: break-word;
+}
+
+button {
+	color: #000;
+	background-color: #e4e4ff;
+	width: 100%;
+	font-size: 1em;
+	font-weight: normal;
+	line-height: 1.8;
+	text-align: left;
+	padding: 3px 10px;
+	margin: 5px 0;
+	border: 1px #aaa;
+	border-style: solid;
+	border-radius: 8px;
+	cursor: initial;
+	touch-action: manipulation;
+}
+
+.button {
+	margin-bottom: 0;
+	border-bottom-style: none;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	cursor: auto;
+}
+.button::after {
+	content: '\25A1';
+	float: right;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.closed {
+	margin-bottom: 5px;
+	border-bottom-style: solid;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+.closed::after { content: '\2212'; }
+
+.nonbottom {
+	margin-bottom: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-style: none;
+}
+.nontop {
+	margin-top: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.gLoop { background-color: #e0e0e0; }
+.gScripting { background-color: #ddffdd; }
+.gDocuments { background-color: #ffeebb; }
+.gVariable { background-color: #ffddcc; }
+.gUnknown { background-color: #bbffff; }
+.gParams {
+	text-align: center;
+	background-color: #f8f8f8;
+}
+
+.content {
+	overflow: hidden;
+	padding: 5px 0 5px 10px;
+	margin-bottom: 5px;
+	border: 1px #aaa;
+	border-style: none solid solid solid;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.contentloop {
+	padding-top: 5px;
+	margin-bottom: 0;
+	border-bottom-style: none;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.dashed { border-left-style: dashed; }
+
+.inside {
+	border-right-style: none;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.commentcontent { background-color: #fff8dd; }
+
+.row { display: flex; }
+
+.col1 {
+	padding-right: 5px;
+	margin-right: 5px;
+	border-right-style: double;
+}
+.col2 { white-space: pre-wrap; }
+
+span.box {
+	display: inline;
+	padding: 3px 5px;
+	margin: 0 2px;
+	border-radius: 8px;
+	background-color: #fff;
+}
+span.var { font-style: italic; }
+span.magic {
+	cursor: pointer;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+	body { background: #000; color: #eee; }
+	button { background: #404060; color: #eee; }
+	.gLoop { background-color: #404040; }
+	.gScripting { background-color: #305030; }
+	.gDocuments { background-color: #505020; }
+	.gVariable { background-color: #503030; }
+	.gUnknown { background-color: #205050; }
+	.gParams { background-color: #181818; }
+	.commentcontent { background-color: #505020; }
+	span.box { background-color: #000; }
+}
+</style></head><body>
+<button class="button gParams">Mastgur</button>
+<div class="content"><div class="col2">"WFQuickActionSurfaces": [],
+"WFWorkflowClientVersion": "1206.4.3",
+"WFWorkflowHasOutputFallback": false,
+"WFWorkflowHasShortcutInputVariables": false,
+"WFWorkflowIcon": {
+   "WFWorkflowIconStartColor": 4292093695,
+   "WFWorkflowIconGlyphNumber": 59511
+},
+"WFWorkflowImportQuestions": [],
+"WFWorkflowInputContentItemClasses": [
+   "WFAppStoreAppContentItem",
+   "WFArticleContentItem",
+   "WFContactContentItem",
+   "WFDateContentItem",
+   "WFEmailAddressContentItem",
+   "WFGenericFileContentItem",
+   "WFImageContentItem",
+   "WFiTunesProductContentItem",
+   "WFLocationContentItem",
+   "WFDCMapsLinkContentItem",
+   "WFAVAssetContentItem",
+   "WFPDFContentItem",
+   "WFPhoneNumberContentItem",
+   "WFRichTextContentItem",
+   "WFSafariWebPageContentItem",
+   "WFStringContentItem",
+   "WFURLContentItem"
+],
+"WFWorkflowMinimumClientVersion": 900,
+"WFWorkflowMinimumClientVersionString": "900",
+"WFWorkflowOutputContentItemClasses": [],
+"WFWorkflowTypes": []
+</div></div>
+
+<button class="button " id="m0">
+0 Select Photos&#12288;&#187;</button>
+	<div class="content">
+		<div class="row"><div class="col1">PhotoPickerTypes</div>
+			<div class="col2">[Images,
+Live Photos,
+Videos]</div></div></div>
+<button class="button " id="m1">
+1 Upload to Imgur&#12288;&#187; <i>2</i> <span class="magic" onclick="magictap(3)">3</span></button>
+	<div class="content">
+		<div class="row"><div class="col1">ImgurAnonymous</div>
+			<div class="col2">true</div></div>
+		<div class="row"><div class="col1">ImgurDescription</div>
+			<div class="col2"><span class="var"><b>[Ask]</b></span> #iOS #social-media</div></div>
+		<div class="row"><div class="col1">ImgurDirectLink</div>
+			<div class="col2">true</div></div>
+		<div class="row"><div class="col1">ImgurTitle</div>
+			<div class="col2"><span class="var"><b>[Ask]</b></span></div></div>
+		<div class="row"><div class="col1">Input</div>
+			<div class="col2"><span class="var"><b>[0 Photos]</b></span></div></div></div>
+<button class="" id="m2">
+2 Copy <span class="box"><span class="var"><b>[1 Imgur URLs]</b></span></span> to Clipboard</button>
+<button class="button gDocuments" id="m3">
+3 Text&#12288;&#187;</button>
+	<div class="content">
+		<div class="col2"><span class="var"><b>[Ask]</b></span> <span class="magic" onclick="magictap(1)"><b>[1 Imgur URLs]</b></span></div></div>
+<button class="button gUnknown" id="m4">
+4 org.joinmastodon.app.SendPostIntent</button>
+	<div class="content">
+		<div class="row"><div class="col1">content</div>
+			<div class="col2"><span class="var"><b>[3 Text]</b></span></div></div>
+		<div class="row"><div class="col1">ShowWhenRun</div>
+			<div class="col2">false</div></div></div>
+<button class="button gDocuments" id="m5">
+5 Comment</button>
+	<div class="content commentcontent">
+		<div class="col2">![image](https://user-images.githubusercontent.com/43663476/127241975-4e26a587-1cea-49c3-a655-1a14138162a7.png)
+
+## Media post to Mastodon for iOS via Imgur upload.
+
+The upcoming [Mastodon for iOS app](https://joinmastodon.org/apps) currently has a single Siri Shortcut action - "Post [Text] on Mastodon" - which only allows one to pass plain text to the app (and then to the service.) When a friend of mine [replied](https://mstdn.cloud.themaymeow.com/@emma/106654320972606699) to my links to [my Share Sheet-destined Mastodon for iOS Siri Shortcut](https://github.com/extratone/i/issues/85) requesting for clarification, I just sortof... whipped this one up without any revision or hesitation, and then felt compelled to publish it when it immediately functioned correctly on [its very first run](https://mastodon.social/@DavidBlue/106655155851383761). (100% certain that success made it a first to do so among my various projects in Siri Shortcuts.)
+
+⇨ [Video Demo](https://user-images.githubusercontent.com/43663476/127242192-d55b5a1a-661f-44b8-8c46-746930bc132c.MOV)
+
+## Steps
+
+1. Prompts to select from Photos app (single file mode.)
+2. Prompts text input for the (optional) Title of the Imgur post.
+3. Prompts text input for the (optional) Description of the Imgur post - by default, I have also added #iOS and #social-media, but obviously, please personalize these for your own use.
+4. Uploads the media to Imgur *anonymously* (by Default) and retrieves the Direct URL to the corresponding post.
+5. Prompts text input in front of said retrieved URL for the actual content of the Toot.
+6. Posts &lt;your text> &lt;imgur  url> [to Mastodon](https://mastodon.social/@DavidBlue/106655409169365663)!
+
+### Mastodon Details
+
+* "[What's that?](https://joinmastodon.org)"
+* [joinmastodon.org/apps](https://joinmastodon.org/apps)
+* [The Mastodon Project's Patreon Page](https://www.patreon.com/mastodon) (Become a patron to gain beta access to the iOS app, coming very soon!)
+* [My celebration of the *third-party* Mastodon apps currently available on iOS](https://bilge.world/mastodon-ios-apps)
+
+***
+## Contact
+* [VCF Contact Card](https://bit.ly/whoisdavidblue)
+* [Email](mailto:davidblue@extratone.com) 
+* [Twitter](https://twitter.com/NeoYokel)
+* [Mastodon](https://mastodon.social/@DavidBlue)
+* [Discord](https://discord.gg/0b9KQUKP858b0iZF)
+* [*Everywhere*](https://www.notion.so/rotund/9fdc8e9610b34b8f991ebc148b760055?v=c170b58650c04fbdb7adc551a73d16a7)...
+
+
+![Masto Mascot iOS Art](https://i.snap.as/Y624NGHM.jpg)</div></div>
+<script>
+for (b of document.getElementsByClassName('button')) {
+	b.addEventListener('click', function() {
+		this.classList.toggle('closed');
+		let s = this.nextElementSibling;
+		s.style.display = getComputedStyle(s).display==='none' ? 'block' : 'none';
+})}
+
+function magictap(id) {
+	event.stopPropagation();
+	let e = document.getElementById('m'+id);
+	let p = e;
+	while ((p = p.parentNode).tagName.toLowerCase() === 'div') {
+		p.style.display = 'block';
+		p.previousElementSibling.classList.remove('closed');
+	}
+	setTimeout(function(){ e.scrollIntoView({block:'nearest',behavior:'smooth'}); }, 10);
+}
+</script></body></html>

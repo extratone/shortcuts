@@ -1,0 +1,829 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="format-detection" content="telephone=no,date=no">
+<title>Wallcreator</title>
+<style>
+body {
+	font-family: system-ui;
+	margin-top: 1rem;
+	margin-bottom: calc(1rem + env(safe-area-inset-bottom));
+	word-break: break-word;
+}
+
+button {
+	color: #000;
+	background-color: #e4e4ff;
+	width: 100%;
+	font-size: 1em;
+	font-weight: normal;
+	line-height: 1.8;
+	text-align: left;
+	padding: 3px 10px;
+	margin: 5px 0;
+	border: 1px #aaa;
+	border-style: solid;
+	border-radius: 8px;
+	cursor: initial;
+	touch-action: manipulation;
+}
+
+.button {
+	margin-bottom: 0;
+	border-bottom-style: none;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	cursor: auto;
+}
+.button::after {
+	content: '\25A1';
+	float: right;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.closed {
+	margin-bottom: 5px;
+	border-bottom-style: solid;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+.closed::after { content: '\2212'; }
+
+.nonbottom {
+	margin-bottom: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-style: none;
+}
+.nontop {
+	margin-top: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.gLoop { background-color: #e0e0e0; }
+.gScripting { background-color: #ddffdd; }
+.gDocuments { background-color: #ffeebb; }
+.gVariable { background-color: #ffddcc; }
+.gUnknown { background-color: #bbffff; }
+.gParams {
+	text-align: center;
+	background-color: #f8f8f8;
+}
+
+.content {
+	overflow: hidden;
+	padding: 5px 0 5px 10px;
+	margin-bottom: 5px;
+	border: 1px #aaa;
+	border-style: none solid solid solid;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.contentloop {
+	padding-top: 5px;
+	margin-bottom: 0;
+	border-bottom-style: none;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.dashed { border-left-style: dashed; }
+
+.inside {
+	border-right-style: none;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.commentcontent { background-color: #fff8dd; }
+
+.row { display: flex; }
+
+.col1 {
+	padding-right: 5px;
+	margin-right: 5px;
+	border-right-style: double;
+}
+.col2 { white-space: pre-wrap; }
+
+span.box {
+	display: inline;
+	padding: 3px 5px;
+	margin: 0 2px;
+	border-radius: 8px;
+	background-color: #fff;
+}
+span.var { font-style: italic; }
+span.magic {
+	cursor: pointer;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+	body { background: #000; color: #eee; }
+	button { background: #404060; color: #eee; }
+	.gLoop { background-color: #404040; }
+	.gScripting { background-color: #305030; }
+	.gDocuments { background-color: #505020; }
+	.gVariable { background-color: #503030; }
+	.gUnknown { background-color: #205050; }
+	.gParams { background-color: #181818; }
+	.commentcontent { background-color: #505020; }
+	span.box { background-color: #000; }
+}
+</style></head><body>
+<button class="button gParams">Wallcreator</button>
+<div class="content"><div class="col2">"WFQuickActionSurfaces": [],
+"WFWorkflowClientVersion": "1206.4.3",
+"WFWorkflowHasOutputFallback": false,
+"WFWorkflowHasShortcutInputVariables": false,
+"WFWorkflowIcon": {
+   "WFWorkflowIconStartColor": 2071128575,
+   "WFWorkflowIconGlyphNumber": 61458
+},
+"WFWorkflowImportQuestions": [],
+"WFWorkflowInputContentItemClasses": [
+   "WFAppStoreAppContentItem",
+   "WFArticleContentItem",
+   "WFContactContentItem",
+   "WFDateContentItem",
+   "WFEmailAddressContentItem",
+   "WFGenericFileContentItem",
+   "WFImageContentItem",
+   "WFiTunesProductContentItem",
+   "WFLocationContentItem",
+   "WFDCMapsLinkContentItem",
+   "WFAVAssetContentItem",
+   "WFPDFContentItem",
+   "WFPhoneNumberContentItem",
+   "WFRichTextContentItem",
+   "WFSafariWebPageContentItem",
+   "WFStringContentItem",
+   "WFURLContentItem"
+],
+"WFWorkflowMinimumClientVersion": 1106,
+"WFWorkflowMinimumClientVersionString": "1106",
+"WFWorkflowOutputContentItemClasses": [],
+"WFWorkflowTypes": []
+</div></div>
+
+<button class="button gDocuments" id="m0">
+0 Comment</button>
+	<div class="content commentcontent">
+		<div class="col2">Create and install Home or Lock Screen wallpapers for iPhone and iPad featuring solid colors or gradients. Wallpapers are automatically sized for different devices. You can enter your favorite color codes manually, or you can let the shortcut generate random colors for you.</div></div>
+<button class="button gDocuments" id="m1">
+1 Comment</button>
+	<div class="content commentcontent">
+		<div class="col2">For some great color combinations, check out: 
+
+https://uigradients.com/</div></div>
+<button class="button gDocuments" id="m2">
+2 Comment</button>
+	<div class="content commentcontent">
+		<div class="col2">JS code adapted from: https://stackoverflow.com/a/58325961</div></div>
+<button class="button gDocuments" id="m3">
+3 Comment</button>
+	<div class="content commentcontent">
+		<div class="col2">Calculate pixel ratios to multiply for screen resolution later.</div></div>
+<button class="" id="m4">
+4 Get Device Details <span class="box">Screen Width</span>&#12288;&#187;</button>
+<button class="gVariable" id="m5">
+5 Set Variable <span class="box">Width Non Retina</span> to <span class="box"><span class="var"><b>[4 Screen Width]</b></span></span></button>
+<button class="" id="m6">
+6 Get Device Details <span class="box">Screen Height</span>&#12288;&#187;</button>
+<button class="gVariable" id="m7">
+7 Set Variable <span class="box">Height Non Retina</span> to <span class="box"><span class="var"><b>[6 Screen Height]</b></span></span></button>
+<button class="button gLoop nonbottom" id="m8">
+8 If <span class="box"><span class="var"><b>[Height Non Retina]</b></span></span> <span class="box">is</span> <span class="box">896</span></button>
+	<div class="content contentloop">
+		<div class="row"><div class="col1">ConditionalLegacyComparisonBehavior</div>
+			<div class="col2">true</div></div>
+<button class="button gDocuments inside" id="m9">
+9 Comment</button>
+	<div class="content inside commentcontent">
+		<div class="col2">XS Max</div></div>
+<button class=" inside" id="m10">
+10 Number <span class="box">3</span>&#12288;&#187;</button>
+<button class="gVariable inside" id="m11">
+11 Set Variable <span class="box">Pixel Ratio</span> to <span class="box"><span class="var"><b>[10 Number]</b></span></span></button></div>
+<button class="button gLoop nonbottom nontop" id="m12">
+12 Otherwise</button>
+	<div class="content contentloop">
+<button class="button gLoop nonbottom inside" id="m13">
+13 If <span class="box"><span class="var"><b>[Height Non Retina]</b></span></span> <span class="box">is</span> <span class="box">812</span></button>
+	<div class="content contentloop dashed inside">
+		<div class="row"><div class="col1">ConditionalLegacyComparisonBehavior</div>
+			<div class="col2">true</div></div>
+<button class="button gDocuments inside" id="m14">
+14 Comment</button>
+	<div class="content inside commentcontent">
+		<div class="col2">XS</div></div>
+<button class=" inside" id="m15">
+15 Number <span class="box">3</span>&#12288;&#187;</button>
+<button class="gVariable inside" id="m16">
+16 Set Variable <span class="box">Pixel Ratio</span> to <span class="box"><span class="var"><b>[15 Number]</b></span></span></button></div>
+<button class="button gLoop nonbottom nontop inside" id="m17">
+17 Otherwise</button>
+	<div class="content contentloop dashed inside">
+<button class="button gLoop nonbottom inside" id="m18">
+18 If <span class="box"><span class="var"><b>[Height Non Retina]</b></span></span> <span class="box">is</span> <span class="box">736</span></button>
+	<div class="content contentloop inside">
+		<div class="row"><div class="col1">ConditionalLegacyComparisonBehavior</div>
+			<div class="col2">true</div></div>
+<button class="button gDocuments inside" id="m19">
+19 Comment</button>
+	<div class="content inside commentcontent">
+		<div class="col2">Plus phones</div></div>
+<button class=" inside" id="m20">
+20 Number <span class="box">3</span>&#12288;&#187;</button>
+<button class="gVariable inside" id="m21">
+21 Set Variable <span class="box">Pixel Ratio</span> to <span class="box"><span class="var"><b>[20 Number]</b></span></span></button></div>
+<button class="button gLoop nonbottom nontop inside" id="m22">
+22 Otherwise</button>
+	<div class="content contentloop inside">
+<button class="button gDocuments inside" id="m23">
+23 Comment</button>
+	<div class="content inside commentcontent">
+		<div class="col2">Any other Retina device</div></div>
+<button class=" inside" id="m24">
+24 Number <span class="box">2</span>&#12288;&#187;</button>
+<button class="gVariable inside" id="m25">
+25 Set Variable <span class="box">Pixel Ratio</span> to <span class="box"><span class="var"><b>[24 Number]</b></span></span></button></div>
+<button class="gLoop nontop inside" id="m26">
+26 End If</button></div>
+<button class="gLoop nontop inside" id="m27">
+27 End If</button></div>
+<button class="gLoop nontop" id="m28">
+28 End If&#12288;▵<span class="magic" onclick="magictap(12)">12</span></button>
+<button class="" id="m29">
+29 Calculate <span class="box"><span class="var"><b>[Width Non Retina]</b></span></span> <span class="box">×</span> <span class="box"><span class="var"><b>[Pixel Ratio]</b></span></span>&#12288;&#187;</button>
+<button class="gVariable" id="m30">
+30 Set Variable <span class="box">Multiplied Width</span> to <span class="box"><span class="var"><b>[29 Calculation Result]</b></span></span></button>
+<button class="" id="m31">
+31 Calculate <span class="box"><span class="var"><b>[Height Non Retina]</b></span></span> <span class="box">×</span> <span class="box"><span class="var"><b>[Pixel Ratio]</b></span></span>&#12288;&#187;</button>
+<button class="gVariable" id="m32">
+32 Set Variable <span class="box">Multiplied Heigth</span> to <span class="box"><span class="var"><b>[31 Calculation Result]</b></span></span></button>
+<button class="button gDocuments" id="m33">
+33 Comment</button>
+	<div class="content commentcontent">
+		<div class="col2">Choose wallpaper type. The CSS styling needs to be saved in a Background variable.</div></div>
+<button class="button gLoop nonbottom" id="m34">
+34 Choose from Menu</button>
+	<div class="content contentloop">
+		<div class="row"><div class="col1">MenuPrompt</div>
+			<div class="col2">Choose a Wallpaper Type</div></div>
+		<div class="row"><div class="col1">MenuItems</div>
+			<div class="col2">[Random Color,
+Random Gradient,
+Random Gradient (Top to Bottom),
+Solid Color,
+Gradient - Left to Right,
+Gradient - Diagonal,
+Gradient - Top to Bottom,
+⤵️ Import from Favorites]</div></div>
+<button class="button gDocuments inside" id="m35">
+35 Comment</button>
+	<div class="content inside commentcontent">
+		<div class="col2">Hack to generate random Hex string on-device with JS</div></div></div>
+<button class="button gLoop nonbottom nontop" id="m36">
+36 Menu Item <span class="box">Random Color</span></button>
+	<div class="content contentloop">
+<button class="button gDocuments inside" id="m37">
+37 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2">&lt;!DOCTYPE html>
+&lt;head>
+&lt;meta http-equiv="content-type" content="text/html; charset=UTF-16">
+&lt;script>
+var hex = '0123456789ABCDEF';
+var output = '';
+for (let i = 0; i &lt; 6; ++i) {
+  output += hex.charAt(Math.floor(Math.random() * hex.length));
+}
+document.write('#' + output)
+&lt;/script>
+&lt;/head>
+&lt;body>
+&lt;/body>
+&lt;/html></div></div>
+<button class="button gScripting inside" id="m38">
+38 Base64 Encode <span class="box"><span class="var"><b>[37 Text]</b></span></span>&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Base64LineBreakMode</div>
+			<div class="col2">None</div></div></div>
+<button class="button  inside" id="m39">
+39 URL <span class="box">data:text/html;base64,<span class="var"><b>[38 Base64 Encoded]</b></span></span>&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Show-WFURLActionURL</div>
+			<div class="col2">true</div></div></div>
+<button class=" inside" id="m40">
+40 Get Contents of Web Page at <span class="box"><span class="var"><b>[39 URL]</b></span></span>&#12288;&#187;</button>
+<button class="gDocuments inside" id="m41">
+41 Get Text from <span class="box"><span class="var"><b>[40 Contents of Web Page]</b></span></span>&#12288;&#187;</button>
+<button class="button gDocuments inside" id="m42">
+42 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2"><span class="var"><b>[41 Text]</b></span></div></div>
+<button class="gVariable inside" id="m43">
+43 Set Variable <span class="box">Color Name</span> to <span class="box"><span class="var"><b>[42 Text]</b></span></span></button>
+<button class="button gDocuments inside" id="m44">
+44 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2">background-color: <span class="var"><b>[Color Name]</b></span>;</div></div>
+<button class="gVariable inside" id="m45">
+45 Set Variable <span class="box">Background</span> to <span class="box"><span class="var"><b>[44 Text]</b></span></span></button></div>
+<button class="button gLoop nonbottom nontop" id="m46">
+46 Menu Item <span class="box">Random Gradient</span></button>
+	<div class="content contentloop">
+<button class="button gLoop nonbottom inside" id="m47">
+47 Repeat <span class="box">2</span> Times</button>
+	<div class="content contentloop dashed inside">
+<button class="button gDocuments inside" id="m48">
+48 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2">&lt;!DOCTYPE html>
+&lt;head>
+&lt;meta http-equiv="content-type" content="text/html; charset=UTF-16">
+&lt;script>
+var hex = '0123456789ABCDEF';
+var output = '';
+for (let i = 0; i &lt; 6; ++i) {
+  output += hex.charAt(Math.floor(Math.random() * hex.length));
+}
+document.write('#' + output)
+&lt;/script>
+&lt;/head>
+&lt;body>
+&lt;/body>
+&lt;/html></div></div>
+<button class="button gScripting inside" id="m49">
+49 Base64 Encode <span class="box"><span class="var"><b>[48 Text]</b></span></span>&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Base64LineBreakMode</div>
+			<div class="col2">None</div></div></div>
+<button class="button  inside" id="m50">
+50 URL <span class="box">data:text/html;base64,<span class="var"><b>[49 Base64 Encoded]</b></span></span>&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Show-WFURLActionURL</div>
+			<div class="col2">true</div></div></div>
+<button class=" inside" id="m51">
+51 Get Contents of Web Page at <span class="box"><span class="var"><b>[50 URL]</b></span></span>&#12288;&#187;</button>
+<button class="gDocuments inside" id="m52">
+52 Get Text from <span class="box"><span class="var"><b>[51 Contents of Web Page]</b></span></span>&#12288;&#187;</button>
+<button class="gVariable inside" id="m53">
+53 Add <span class="box"><span class="var"><b>[52 Text]</b></span></span> to Variable <span class="box">Random Colors</span></button></div>
+<button class="gLoop nontop inside" id="m54">
+54 End Repeat Times</button>
+<button class="button gDocuments inside" id="m55">
+55 Split Text <span class="box"><span class="var"><b>[Random Colors]</b></span></span> by New Lines&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Show-text</div>
+			<div class="col2">true</div></div></div>
+<button class="button gDocuments inside" id="m56">
+56 Combine Text <span class="box"><span class="var"><b>[55 Split Text]</b></span></span> with <span class="box">Custom</span>&#12288;&#187; <i>57</i> <span class="magic" onclick="magictap(58)">58</span></button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Show-text</div>
+			<div class="col2">true</div></div>
+		<div class="row"><div class="col1">TextCustomSeparator</div>
+			<div class="col2">, </div></div></div>
+<button class="gVariable inside" id="m57">
+57 Set Variable <span class="box">Color Name</span> to <span class="box"><span class="var"><b>[56 Combined Text]</b></span></span></button>
+<button class="button gDocuments inside" id="m58">
+58 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2">background-image: linear-gradient(to bottom right, <span class="magic" onclick="magictap(56)"><b>[56 Combined Text]</b></span>);</div></div>
+<button class="gVariable inside" id="m59">
+59 Set Variable <span class="box">Background</span> to <span class="box"><span class="var"><b>[58 Text]</b></span></span></button></div>
+<button class="button gLoop nonbottom nontop" id="m60">
+60 Menu Item <span class="box">Random Gradient (Top to Bottom)</span>&#12288;▵<span class="magic" onclick="magictap(46)">46</span></button>
+	<div class="content contentloop">
+<button class="button gLoop nonbottom inside" id="m61">
+61 Repeat <span class="box">2</span> Times</button>
+	<div class="content contentloop dashed inside">
+<button class="button gDocuments inside" id="m62">
+62 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2">&lt;!DOCTYPE html>
+&lt;head>
+&lt;meta http-equiv="content-type" content="text/html; charset=UTF-16">
+&lt;script>
+var hex = '0123456789ABCDEF';
+var output = '';
+for (let i = 0; i &lt; 6; ++i) {
+  output += hex.charAt(Math.floor(Math.random() * hex.length));
+}
+document.write('#' + output)
+&lt;/script>
+&lt;/head>
+&lt;body>
+&lt;/body>
+&lt;/html></div></div>
+<button class="button gScripting inside" id="m63">
+63 Base64 Encode <span class="box"><span class="var"><b>[62 Text]</b></span></span>&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Base64LineBreakMode</div>
+			<div class="col2">None</div></div></div>
+<button class="button  inside" id="m64">
+64 URL <span class="box">data:text/html;base64,<span class="var"><b>[63 Base64 Encoded]</b></span></span>&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Show-WFURLActionURL</div>
+			<div class="col2">true</div></div></div>
+<button class=" inside" id="m65">
+65 Get Contents of Web Page at <span class="box"><span class="var"><b>[64 URL]</b></span></span>&#12288;&#187;</button>
+<button class="gDocuments inside" id="m66">
+66 Get Text from <span class="box"><span class="var"><b>[65 Contents of Web Page]</b></span></span>&#12288;&#187;</button>
+<button class="gVariable inside" id="m67">
+67 Add <span class="box"><span class="var"><b>[66 Text]</b></span></span> to Variable <span class="box">Random Colors</span></button></div>
+<button class="gLoop nontop inside" id="m68">
+68 End Repeat Times</button>
+<button class="button gDocuments inside" id="m69">
+69 Split Text <span class="box"><span class="var"><b>[Random Colors]</b></span></span> by New Lines&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Show-text</div>
+			<div class="col2">true</div></div></div>
+<button class="button gDocuments inside" id="m70">
+70 Combine Text <span class="box"><span class="var"><b>[69 Split Text]</b></span></span> with <span class="box">Custom</span>&#12288;&#187; <i>71</i> <span class="magic" onclick="magictap(72)">72</span></button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Show-text</div>
+			<div class="col2">true</div></div>
+		<div class="row"><div class="col1">TextCustomSeparator</div>
+			<div class="col2">, </div></div></div>
+<button class="gVariable inside" id="m71">
+71 Set Variable <span class="box">Color Name</span> to <span class="box"><span class="var"><b>[70 Combined Text]</b></span></span></button>
+<button class="button gDocuments inside" id="m72">
+72 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2">background-image: linear-gradient(to bottom, <span class="magic" onclick="magictap(70)"><b>[70 Combined Text]</b></span>);</div></div>
+<button class="gVariable inside" id="m73">
+73 Set Variable <span class="box">Background</span> to <span class="box"><span class="var"><b>[72 Text]</b></span></span></button></div>
+<button class="button gLoop nonbottom nontop" id="m74">
+74 Menu Item <span class="box">Solid Color</span>&#12288;▵<span class="magic" onclick="magictap(60)">60</span></button>
+	<div class="content contentloop">
+<button class="button gScripting inside" id="m75">
+75 Ask for Text Input&#12288;&#187; <i>76</i> <span class="magic" onclick="magictap(77)">77</span></button>
+	<div class="content inside">
+		<div class="row"><div class="col1">AskActionPrompt</div>
+			<div class="col2">Enter a Color Name or Hex Code</div></div></div>
+<button class="gVariable inside" id="m76">
+76 Set Variable <span class="box">Color Name</span> to <span class="box"><span class="var"><b>[75 Provided Input]</b></span></span></button>
+<button class="button gDocuments inside" id="m77">
+77 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2">background-color: <span class="magic" onclick="magictap(75)"><b>[75 Ask for Input]</b></span>;</div></div>
+<button class="gVariable inside" id="m78">
+78 Set Variable <span class="box">Background</span> to <span class="box"><span class="var"><b>[77 Text]</b></span></span></button></div>
+<button class="button gLoop nonbottom nontop" id="m79">
+79 Menu Item <span class="box">Gradient - Left to Right</span></button>
+	<div class="content contentloop">
+<button class="button gScripting inside" id="m80">
+80 Ask for Text Input <b>&#12288;➔ Color #1</b>&#12288;&#187; <span class="magic" onclick="magictap(82)">82</span> <span class="magic" onclick="magictap(84)">84</span></button>
+	<div class="content inside">
+		<div class="row"><div class="col1">AskActionPrompt</div>
+			<div class="col2">Enter Color #1 (Name or Hex Code)</div></div></div>
+<button class="button gScripting inside" id="m81">
+81 Ask for Text Input <b>&#12288;➔ #Color 2</b>&#12288;&#187; <i>82</i> <span class="magic" onclick="magictap(84)">84</span></button>
+	<div class="content inside">
+		<div class="row"><div class="col1">AskActionPrompt</div>
+			<div class="col2">Enter Color #2 (Name or Hex Code)</div></div></div>
+<button class="button gDocuments inside" id="m82">
+82 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2"><span class="magic" onclick="magictap(80)"><b>[80 Color #1]</b></span> , <span class="var"><b>[81 #Color 2]</b></span></div></div>
+<button class="gVariable inside" id="m83">
+83 Set Variable <span class="box">Color Name</span> to <span class="box"><span class="var"><b>[82 Text]</b></span></span></button>
+<button class="button gDocuments inside" id="m84">
+84 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2">background-image: linear-gradient(to right, <span class="magic" onclick="magictap(80)"><b>[80 Color #1]</b></span> , <span class="magic" onclick="magictap(81)"><b>[81 #Color 2]</b></span>);</div></div>
+<button class="gVariable inside" id="m85">
+85 Set Variable <span class="box">Background</span> to <span class="box"><span class="var"><b>[84 Text]</b></span></span></button></div>
+<button class="button gLoop nonbottom nontop" id="m86">
+86 Menu Item <span class="box">Gradient - Diagonal</span></button>
+	<div class="content contentloop">
+<button class="button gScripting inside" id="m87">
+87 Ask for Text Input <b>&#12288;➔ Color #1</b>&#12288;&#187; <span class="magic" onclick="magictap(89)">89</span> <span class="magic" onclick="magictap(91)">91</span></button>
+	<div class="content inside">
+		<div class="row"><div class="col1">AskActionPrompt</div>
+			<div class="col2">Enter Color #1 (Name or Hex Code)</div></div></div>
+<button class="button gScripting inside" id="m88">
+88 Ask for Text Input <b>&#12288;➔ Color #2</b>&#12288;&#187; <i>89</i> <span class="magic" onclick="magictap(91)">91</span></button>
+	<div class="content inside">
+		<div class="row"><div class="col1">AskActionPrompt</div>
+			<div class="col2">Enter Color #2 (Name or Hex Code)</div></div></div>
+<button class="button gDocuments inside" id="m89">
+89 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2"><span class="magic" onclick="magictap(87)"><b>[87 Color #1]</b></span>, <span class="var"><b>[88 Color #2]</b></span></div></div>
+<button class="gVariable inside" id="m90">
+90 Set Variable <span class="box">Color Name</span> to <span class="box"><span class="var"><b>[89 Text]</b></span></span></button>
+<button class="button gDocuments inside" id="m91">
+91 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2">background-image: linear-gradient(to bottom right, <span class="magic" onclick="magictap(87)"><b>[87 Color #1]</b></span>, <span class="magic" onclick="magictap(88)"><b>[88 Color #2]</b></span>);</div></div>
+<button class="gVariable inside" id="m92">
+92 Set Variable <span class="box">Background</span> to <span class="box"><span class="var"><b>[91 Text]</b></span></span></button></div>
+<button class="button gLoop nonbottom nontop" id="m93">
+93 Menu Item <span class="box">Gradient - Top to Bottom</span></button>
+	<div class="content contentloop">
+<button class="button gScripting inside" id="m94">
+94 Ask for Text Input <b>&#12288;➔ Color #1</b>&#12288;&#187; <span class="magic" onclick="magictap(96)">96</span></button>
+	<div class="content inside">
+		<div class="row"><div class="col1">AskActionPrompt</div>
+			<div class="col2">Enter Color #1 (Name or Hex Code)</div></div></div>
+<button class="button gScripting inside" id="m95">
+95 Ask for Text Input <b>&#12288;➔ Color #2</b>&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">AskActionPrompt</div>
+			<div class="col2">Enter Color #2 (Name or Hex Code)</div></div></div>
+<button class="button gDocuments inside" id="m96">
+96 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2"><span class="magic" onclick="magictap(94)"><b>[94 Color #1]</b></span>, <span class="var"><b>[95 Color #2]</b></span></div></div>
+<button class="gVariable inside" id="m97">
+97 Set Variable <span class="box">Color Name</span> to <span class="box"><span class="var"><b>[96 Text]</b></span></span></button>
+<button class="button gDocuments inside" id="m98">
+98 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2">background-image: linear-gradient(to bottom, <span class="var"><b>[Color Name]</b></span>);</div></div>
+<button class="gVariable inside" id="m99">
+99 Set Variable <span class="box">Background</span> to <span class="box"><span class="var"><b>[98 Text]</b></span></span></button></div>
+<button class="button gLoop nonbottom nontop" id="m100">
+100 Menu Item <span class="box">⤵️ Import from Favorites</span></button>
+	<div class="content contentloop">
+<button class="button gDocuments inside" id="m101">
+101 Comment</button>
+	<div class="content inside commentcontent">
+		<div class="col2">Import previously saved favorite wallpapers. These are text files stored in iCloud Drive.</div></div>
+<button class=" inside" id="m102">
+102 Get Device Details <span class="box">Device Model</span>&#12288;&#187; <i>103</i> <span class="magic" onclick="magictap(122)">122</span> <span class="magic" onclick="magictap(125)">125</span> <span class="magic" onclick="magictap(129)">129</span> <span class="magic" onclick="magictap(131)">131</span></button>
+<button class="button  inside" id="m103">
+103 Get File <span class="box">WallCreator/<span class="var"><b>[102 Device Model]</b></span>/</span> from Folder&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">ShowFilePicker</div>
+			<div class="col2">false</div></div>
+		<div class="row"><div class="col1">GetFolderContents</div>
+			<div class="col2">true</div></div></div>
+<button class="button  inside" id="m104">
+104 Filter Files <span class="box"><span class="var"><b>[103 File]</b></span></span>&#12288;&#187; <span class="magic" onclick="magictap(106)">106</span></button>
+	<div class="content inside">
+		<div class="row"><div class="col1">ContentItemSortProperty</div>
+			<div class="col2">Creation Date</div></div>
+		<div class="row"><div class="col1">ContentItemSortOrder</div>
+			<div class="col2">Oldest First</div></div></div>
+<button class="button gDocuments inside" id="m105">
+105 Comment</button>
+	<div class="content inside commentcontent">
+		<div class="col2">Decode image from base64, resize for vCard, and assemble rich menu</div></div>
+<button class="button gLoop nonbottom inside" id="m106">
+106 Repeat with Each in <span class="box"><span class="magic" onclick="magictap(104)"><b>[104 Files]</b></span></span></button>
+	<div class="content contentloop dashed inside">
+<button class="gDocuments inside" id="m107">
+107 Get Text from <span class="box"><span class="var"><b>[Repeat Item]</b></span></span>&#12288;&#187;</button>
+<button class="gScripting inside" id="m108">
+108 Base64 <span class="box">Decode</span> <span class="box"><span class="var"><b>[107 Text]</b></span></span>&#12288;&#187;</button>
+<button class=" inside" id="m109">
+109 Get Images from <span class="box"><span class="var"><b>[108 Base64 Encoded]</b></span></span>&#12288;&#187;</button>
+<button class="button  inside" id="m110">
+110 Resize Image <span class="box"><span class="var"><b>[109 Images]</b></span></span> to Size&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">ImageResizeWidth</div>
+			<div class="col2">120</div></div></div>
+<button class="button  inside" id="m111">
+111 Mask Image <span class="box"><span class="var"><b>[110 Resized Image]</b></span></span> with Rounded Rectangle&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">MaskCornerRadius</div>
+			<div class="col2">4</div></div></div>
+<button class="button gScripting inside" id="m112">
+112 Base64 Encode <span class="box"><span class="var"><b>[111 Masked Image]</b></span></span>&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Base64LineBreakMode</div>
+			<div class="col2">None</div></div></div>
+<button class="button gDocuments inside" id="m113">
+113 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2">BEGIN:VCARD
+N:<span class="var"><b>[Repeat Item</b>’s Name<b>]</b></span>;;;;
+PHOTO;TYPE=JPEG;ENCODING=BASE64:<span class="var"><b>[112 Base64 Encoded]</b></span>
+END:VCARD</div></div>
+<button class="gVariable inside" id="m114">
+114 Add <span class="box"><span class="var"><b>[113 Text]</b></span></span> to Variable <span class="box">vCards</span></button></div>
+<button class="gLoop nontop inside" id="m115">
+115 End Repeat with Each</button>
+<button class="button gDocuments inside" id="m116">
+116 Combine Text <span class="box"><span class="var"><b>[vCards]</b></span></span> with New Lines&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Show-text</div>
+			<div class="col2">true</div></div></div>
+<button class="gScripting inside" id="m117">
+117 Set Name of <span class="box"><span class="var"><b>[116 Combined Text]</b></span></span> to <span class="box">Favorites.vcf</span>&#12288;&#187;</button>
+<button class="gVariable inside" id="m118">
+118 Set Variable <span class="box">Favorites</span> to <span class="box"><span class="var"><b>[117 Renamed Item</b> as Contact<b>]</b></span></span></button>
+<button class="button gLoop nonbottom inside" id="m119">
+119 Repeat with Each in <span class="box"><span class="var"><b>[Favorites]</b></span></span></button>
+	<div class="content contentloop dashed inside">
+<button class="gScripting inside" id="m120">
+120 Set Name of <span class="box"><span class="var"><b>[Repeat Item</b> as Contact’s Contact Photo<b>]</b></span></span> to <span class="box"><span class="var"><b>[Repeat Item</b>’s Name<b>]</b></span></span></button></div>
+<button class="gLoop nontop inside" id="m121">
+121 End Repeat with Each&#12288;&#187;</button>
+<button class="button gScripting inside" id="m122">
+122 List&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2">["<span class="magic" onclick="magictap(102)"><b>[102 Device Model]</b></span> Wallpapers",
+"<span class="var"><b>[121 Repeat Results]</b></span>"]</div></div>
+<button class="gScripting inside" id="m123">
+123 Choose from List <span class="box"><span class="var"><b>[122 List]</b></span></span>&#12288;&#187; <span class="magic" onclick="magictap(125)">125</span> <span class="magic" onclick="magictap(129)">129</span> <span class="magic" onclick="magictap(131)">131</span></button>
+<button class="button gDocuments inside" id="m124">
+124 Comment</button>
+	<div class="content inside commentcontent">
+		<div class="col2">Account for extra trailing space added to the file name when generating random colors via JS. See the file name below</div></div>
+<button class="button  inside" id="m125">
+125 Get File <span class="box">WallCreator/<span class="magic" onclick="magictap(102)"><b>[102 Device Model]</b></span>/<span class="magic" onclick="magictap(123)"><b>[123 Chosen Item]</b></span> .txt</span> from Folder&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">ShowFilePicker</div>
+			<div class="col2">false</div></div>
+		<div class="row"><div class="col1">GetFolderContents</div>
+			<div class="col2">true</div></div></div>
+<button class="gDocuments inside" id="m126">
+126 Get Text from <span class="box"><span class="var"><b>[125 File]</b></span></span>&#12288;&#187;</button>
+<button class="gScripting inside" id="m127">
+127 Base64 <span class="box">Decode</span> <span class="box"><span class="var"><b>[126 Text]</b></span></span>&#12288;&#187;</button>
+<button class=" inside" id="m128">
+128 Get Images from <span class="box"><span class="var"><b>[127 Base64 Encoded]</b></span></span>&#12288;&#187; <span class="magic" onclick="magictap(131)">131</span> <span class="magic" onclick="magictap(134)">134</span></button>
+<button class="button gLoop nonbottom inside" id="m129">
+129 Choose from Menu</button>
+	<div class="content contentloop dashed inside">
+		<div class="row"><div class="col1">MenuPrompt</div>
+			<div class="col2">Actions for '<span class="magic" onclick="magictap(123)"><b>[123 Chosen Item]</b></span>' for <span class="magic" onclick="magictap(102)"><b>[102 Device Model]</b></span></div></div>
+		<div class="row"><div class="col1">MenuItems</div>
+			<div class="col2">[↗️ Export as Image,
+🌄 Set as Wallpaper,
+↩️ Go Back]</div></div></div>
+<button class="button gLoop nonbottom nontop inside" id="m130">
+130 Menu Item <span class="box">↗️ Export as Image</span></button>
+	<div class="content contentloop dashed inside">
+<button class="gScripting inside" id="m131">
+131 Set Name of <span class="box"><span class="magic" onclick="magictap(128)"><b>[128 Images]</b></span></span> to <span class="box"><span class="magic" onclick="magictap(102)"><b>[102 Device Model]</b></span> - <span class="magic" onclick="magictap(123)"><b>[123 Chosen Item]</b></span>.png</span>&#12288;&#187;</button>
+<button class=" inside" id="m132">
+132 Share <span class="box"><span class="var"><b>[131 Renamed Item]</b></span></span></button></div>
+<button class="button gLoop nonbottom nontop inside" id="m133">
+133 Menu Item <span class="box">🌄 Set as Wallpaper</span></button>
+	<div class="content contentloop dashed inside">
+<button class=" inside" id="m134">
+134 Set Lock Screen, Home Screen Wallpaper to <span class="box"><span class="magic" onclick="magictap(128)"><b>[128 Images]</b></span></span></button></div>
+<button class="button gLoop nonbottom nontop inside" id="m135">
+135 Menu Item <span class="box">↩️ Go Back</span></button>
+	<div class="content contentloop dashed inside">
+<button class="button  inside" id="m136">
+136 Run Shortcut <span class="box">WallCreator</span></button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Workflow</div>
+			<div class="col2">{  "workflowIdentifier": "DD900F8E-B352-4460-9814-05F439B846E8",
+   "workflowName": "WallCreator",
+   "isSelf": true
+}</div></div></div>
+<button class="gScripting inside" id="m137">
+137 Stop This Shortcut</button></div>
+<button class="gLoop nontop inside" id="m138">
+138 End Menu</button>
+<button class="gScripting inside" id="m139">
+139 Stop This Shortcut</button></div>
+<button class="gLoop nontop" id="m140">
+140 End Menu&#12288;▵<span class="magic" onclick="magictap(100)">100</span></button>
+<button class="button gDocuments" id="m141">
+141 Comment</button>
+	<div class="content commentcontent">
+		<div class="col2">Assemble HTML, generate image, resize it by device dimensions, and preview it.</div></div>
+<button class="button gDocuments" id="m142">
+142 Text&#12288;&#187;</button>
+	<div class="content">
+		<div class="col2">&lt;head>
+&lt;meta name="viewport" content="initial-scale=1.0">
+&lt;meta charset="utf-8">
+&lt;style>
+body {
+<span class="var"><b>[Background]</b></span>
+}
+&lt;/style>
+&lt;title>Icon&lt;/title>
+&lt;/head></div></div>
+<button class="" id="m143">
+143 Make Rich Text from HTML <span class="box"><span class="var"><b>[142 Text]</b></span></span>&#12288;&#187;</button>
+<button class="" id="m144">
+144 Make PDF from <span class="box"><span class="var"><b>[143 Rich Text from HTML]</b></span></span>&#12288;&#187;</button>
+<button class="" id="m145">
+145 Get Images from <span class="box"><span class="var"><b>[144 PDF]</b></span></span>&#12288;&#187;</button>
+<button class="gScripting" id="m146">
+146 Set Name of <span class="box"><span class="var"><b>[145 Images]</b></span></span> to <span class="box"><span class="var"><b>[Color Name]</b></span></span>&#12288;&#187;</button>
+<button class="button " id="m147">
+147 Resize Image <span class="box"><span class="var"><b>[146 Renamed Item]</b></span></span> to Size&#12288;&#187; <i>148</i> <span class="magic" onclick="magictap(151)">151</span> <span class="magic" onclick="magictap(153)">153</span> <span class="magic" onclick="magictap(162)">162</span></button>
+	<div class="content">
+		<div class="row"><div class="col1">ImageResizeHeight</div>
+			<div class="col2"><span class="var"><b>[Multiplied Heigth]</b></span></div></div>
+		<div class="row"><div class="col1">ImageResizeWidth</div>
+			<div class="col2"><span class="var"><b>[Multiplied Width]</b></span></div></div></div>
+<button class="gDocuments" id="m148">
+148 Quick Look <span class="box"><span class="var"><b>[147 Resized Image]</b></span></span></button>
+<button class="button gLoop nonbottom" id="m149">
+149 Choose from Menu</button>
+	<div class="content contentloop">
+		<div class="row"><div class="col1">MenuPrompt</div>
+			<div class="col2">Wallpaper Actions</div></div>
+		<div class="row"><div class="col1">MenuItems</div>
+			<div class="col2">[📱 Set as Wallpaper,
+🌄 Save to Photos,
+🔄 Generate New One,
+⬇️ Save to Favorites]</div></div></div>
+<button class="button gLoop nonbottom nontop" id="m150">
+150 Menu Item <span class="box">📱 Set as Wallpaper</span></button>
+	<div class="content contentloop">
+<button class="button  inside" id="m151">
+151 Set <span class="box"><span class="var"><b>[Ask]</b></span></span> Wallpaper to <span class="box"><span class="magic" onclick="magictap(147)"><b>[147 Resized Image]</b></span></span></button>
+	<div class="content inside">
+		<div class="row"><div class="col1">WallpaperShowPreview</div>
+			<div class="col2">true</div></div></div></div>
+<button class="button gLoop nonbottom nontop" id="m152">
+152 Menu Item <span class="box">🌄 Save to Photos</span></button>
+	<div class="content contentloop">
+<button class=" inside" id="m153">
+153 Save Photos <span class="box"><span class="magic" onclick="magictap(147)"><b>[147 Resized Image]</b></span></span> to <span class="box">Wallpapers</span></button>
+<button class="button gScripting inside" id="m154">
+154 Show Alert</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">AlertActionCancelButtonShown</div>
+			<div class="col2">false</div></div>
+		<div class="row"><div class="col1">AlertActionMessage</div>
+			<div class="col2">The wallpaper has been saved in the Photos app.</div></div>
+		<div class="row"><div class="col1">AlertActionTitle</div>
+			<div class="col2">Wallpaper Saved</div></div></div>
+<button class="gScripting inside" id="m155">
+155 Stop This Shortcut</button></div>
+<button class="button gLoop nonbottom nontop" id="m156">
+156 Menu Item <span class="box">🔄 Generate New One</span></button>
+	<div class="content contentloop">
+<button class="button  inside" id="m157">
+157 Run Shortcut <span class="box">Color Wallpaper Creator</span></button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Workflow</div>
+			<div class="col2">{  "workflowIdentifier": "DD900F8E-B352-4460-9814-05F439B846E8",
+   "workflowName": "Color Wallpaper Creator",
+   "isSelf": true
+}</div></div></div></div>
+<button class="button gLoop nonbottom nontop" id="m158">
+158 Menu Item <span class="box">⬇️ Save to Favorites</span></button>
+	<div class="content contentloop">
+<button class="button  inside" id="m159">
+159 Create Folder</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">FilePath</div>
+			<div class="col2">WallCreator/</div></div></div>
+<button class=" inside" id="m160">
+160 Get Device Details <span class="box">Device Model</span>&#12288;&#187; <i>161</i> <span class="magic" onclick="magictap(165)">165</span></button>
+<button class="button  inside" id="m161">
+161 Create Folder</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">FilePath</div>
+			<div class="col2">WallCreator/<span class="var"><b>[160 Device Model]</b></span>/</div></div></div>
+<button class="button gScripting inside" id="m162">
+162 Base64 Encode <span class="box"><span class="magic" onclick="magictap(147)"><b>[147 Resized Image]</b></span></span>&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="row"><div class="col1">Base64LineBreakMode</div>
+			<div class="col2">None</div></div></div>
+<button class="button gDocuments inside" id="m163">
+163 Text&#12288;&#187;</button>
+	<div class="content inside">
+		<div class="col2"><span class="var"><b>[162 Base64 Encoded]</b></span></div></div>
+<button class="gScripting inside" id="m164">
+164 Set Name of <span class="box"><span class="var"><b>[163 Text]</b></span></span> to <span class="box"><span class="var"><b>[Color Name]</b></span>.txt</span>&#12288;&#187;</button>
+<button class="button  inside" id="m165">
+165 Save File <span class="box"><span class="var"><b>[164 Renamed Item]</b></span></span></button>
+	<div class="content inside">
+		<div class="row"><div class="col1">AskWhereToSave</div>
+			<div class="col2">false</div></div>
+		<div class="row"><div class="col1">SaveFileOverwrite</div>
+			<div class="col2">true</div></div>
+		<div class="row"><div class="col1">FileDestinationPath</div>
+			<div class="col2">WallCreator/<span class="magic" onclick="magictap(160)"><b>[160 Device Model]</b></span>/</div></div></div></div>
+<button class="gLoop nontop" id="m166">
+166 End Menu</button>
+<script>
+for (b of document.getElementsByClassName('button')) {
+	b.addEventListener('click', function() {
+		this.classList.toggle('closed');
+		let s = this.nextElementSibling;
+		s.style.display = getComputedStyle(s).display==='none' ? 'block' : 'none';
+})}
+
+function magictap(id) {
+	event.stopPropagation();
+	let e = document.getElementById('m'+id);
+	let p = e;
+	while ((p = p.parentNode).tagName.toLowerCase() === 'div') {
+		p.style.display = 'block';
+		p.previousElementSibling.classList.remove('closed');
+	}
+	setTimeout(function(){ e.scrollIntoView({block:'nearest',behavior:'smooth'}); }, 10);
+}
+</script></body></html>
