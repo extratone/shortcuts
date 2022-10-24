@@ -1,0 +1,90 @@
+{
+	"WFWorkflowMinimumClientVersionString": "900",
+	"WFWorkflowMinimumClientVersion": 900,
+	"WFWorkflowIcon": {
+		"WFWorkflowIconStartColor": -20702977,
+		"WFWorkflowIconGlyphNumber": 61440
+	},
+	"WFWorkflowClientVersion": "1206.4.3",
+	"WFWorkflowOutputContentItemClasses": [
+		"WFStringContentItem"
+	],
+	"WFWorkflowHasOutputFallback": true,
+	"WFWorkflowActions": [
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.detect.link",
+			"WFWorkflowActionParameters": {
+				"WFInput": {
+					"Value": {
+						"string": "\uFFFC",
+						"attachmentsByRange": {
+							"{0, 1}": {
+								"Type": "ExtensionInput"
+							}
+						}
+					},
+					"WFSerializationType": "WFTextTokenString"
+				},
+				"UUID": "90FAD6E7-6099-4E6B-9B11-866E341DF6A8"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.text.combine",
+			"WFWorkflowActionParameters": {
+				"UUID": "540EFD62-FBBC-42E4-B727-481075663C26",
+				"text": {
+					"Value": {
+						"OutputUUID": "90FAD6E7-6099-4E6B-9B11-866E341DF6A8",
+						"Type": "ActionOutput",
+						"OutputName": "URLs"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				},
+				"Show-text": true
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.output",
+			"WFWorkflowActionParameters": {
+				"WFNoOutputSurfaceBehavior": "Copy to Clipboard",
+				"WFOutput": {
+					"Value": {
+						"string": "\uFFFC",
+						"attachmentsByRange": {
+							"{0, 1}": {
+								"OutputUUID": "540EFD62-FBBC-42E4-B727-481075663C26",
+								"Type": "ActionOutput",
+								"OutputName": "Combined Text"
+							}
+						}
+					},
+					"WFSerializationType": "WFTextTokenString"
+				},
+				"WFResponse": {
+					"Value": {
+						"string": "\uFFFC",
+						"attachmentsByRange": {
+							"{0, 1}": {
+								"OutputUUID": "540EFD62-FBBC-42E4-B727-481075663C26",
+								"Type": "ActionOutput",
+								"OutputName": "Combined Text"
+							}
+						}
+					},
+					"WFSerializationType": "WFTextTokenString"
+				}
+			}
+		}
+	],
+	"WFWorkflowInputContentItemClasses": [
+		"WFStringContentItem",
+		"WFRichTextContentItem",
+		"WFURLContentItem",
+		"WFSafariWebPageContentItem",
+		"WFArticleContentItem"
+	],
+	"WFWorkflowImportQuestions": [],
+	"WFWorkflowTypes": [],
+	"WFQuickActionSurfaces": [],
+	"WFWorkflowHasShortcutInputVariables": true
+}
