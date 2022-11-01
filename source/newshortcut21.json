@@ -1,0 +1,150 @@
+{
+	"WFWorkflowMinimumClientVersionString": "900",
+	"WFWorkflowMinimumClientVersion": 900,
+	"WFWorkflowIcon": {
+		"WFWorkflowIconStartColor": -12365313,
+		"WFWorkflowIconGlyphNumber": 59436
+	},
+	"WFWorkflowClientVersion": "1303.1.1",
+	"WFWorkflowOutputContentItemClasses": [
+		"WFStringContentItem"
+	],
+	"WFWorkflowHasOutputFallback": true,
+	"WFWorkflowActions": [
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.comment",
+			"WFWorkflowActionParameters": {
+				"WFCommentActionText": "Step 1:\nReading the macOS version including the build number."
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.runapplescript",
+			"WFWorkflowActionParameters": {
+				"Script": "set os_version to do shell script \"sw_vers -productVersion\"\rset os_build to do shell script \"sw_vers -buildVersion\"\r\rset macOSInfo to \"macOS \" & os_version & \" (\" & os_build & \")\"",
+				"UUID": "CE14D92B-4587-44DA-98C3-7935891D4E02"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+			"WFWorkflowActionParameters": {
+				"WFInput": {
+					"Value": {
+						"OutputUUID": "CE14D92B-4587-44DA-98C3-7935891D4E02",
+						"Type": "ActionOutput",
+						"OutputName": "AppleScript Result"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				},
+				"WFVariableName": "macOSVersion"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.comment",
+			"WFWorkflowActionParameters": {
+				"WFCommentActionText": "Step 2:\nReading the currently active/frontmost app name, version and build number."
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.runapplescript",
+			"WFWorkflowActionParameters": {
+				"Script": "tell application \"System Events\"\r\tset activeApp to first application process whose frontmost is true\r\tset appName to name of activeApp\r\tset plistFile to (path of alias of file of activeApp & \"Info.plist\") as text\r\ttell property list file plistFile\r\t\tset appVersion to value of property list item \"CFBundleShortVersionString\"\r\t\tset appBuild to value of property list item \"CFBundleVersion\"\r\tend tell\rend tell\r\rset appInfo to appName & \" \" & appVersion & \" (\" & appBuild & \")\"",
+				"UUID": "EFBD2652-0D12-482B-8C4D-36522F942DA7"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+			"WFWorkflowActionParameters": {
+				"WFInput": {
+					"Value": {
+						"OutputUUID": "EFBD2652-0D12-482B-8C4D-36522F942DA7",
+						"Type": "ActionOutput",
+						"OutputName": "AppleScript Result"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				},
+				"WFVariableName": "activeAppVersion"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.gettext",
+			"WFWorkflowActionParameters": {
+				"WFTextActionText": {
+					"Value": {
+						"string": "Active App: \uFFFC\nOS: \uFFFC",
+						"attachmentsByRange": {
+							"{12, 1}": {
+								"VariableName": "activeAppVersion",
+								"Type": "Variable"
+							},
+							"{18, 1}": {
+								"VariableName": "macOSVersion",
+								"Type": "Variable"
+							}
+						}
+					},
+					"WFSerializationType": "WFTextTokenString"
+				},
+				"UUID": "05E9D5F0-7D51-4000-AAD1-061DFFFB8A25"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.output",
+			"WFWorkflowActionParameters": {
+				"WFNoOutputSurfaceBehavior": "Respond",
+				"WFOutput": {
+					"Value": {
+						"string": "\uFFFC",
+						"attachmentsByRange": {
+							"{0, 1}": {
+								"OutputUUID": "05E9D5F0-7D51-4000-AAD1-061DFFFB8A25",
+								"Type": "ActionOutput",
+								"OutputName": "Text"
+							}
+						}
+					},
+					"WFSerializationType": "WFTextTokenString"
+				},
+				"WFResponse": {
+					"Value": {
+						"string": "\uFFFC",
+						"attachmentsByRange": {
+							"{0, 1}": {
+								"OutputUUID": "05E9D5F0-7D51-4000-AAD1-061DFFFB8A25",
+								"Type": "ActionOutput",
+								"OutputName": "Text"
+							}
+						}
+					},
+					"WFSerializationType": "WFTextTokenString"
+				}
+			}
+		}
+	],
+	"WFWorkflowInputContentItemClasses": [
+		"WFAppStoreAppContentItem",
+		"WFArticleContentItem",
+		"WFContactContentItem",
+		"WFDateContentItem",
+		"WFEmailAddressContentItem",
+		"WFFolderContentItem",
+		"WFGenericFileContentItem",
+		"WFImageContentItem",
+		"WFiTunesProductContentItem",
+		"WFLocationContentItem",
+		"WFDCMapsLinkContentItem",
+		"WFAVAssetContentItem",
+		"WFPDFContentItem",
+		"WFPhoneNumberContentItem",
+		"WFRichTextContentItem",
+		"WFSafariWebPageContentItem",
+		"WFStringContentItem",
+		"WFURLContentItem"
+	],
+	"WFWorkflowImportQuestions": [],
+	"WFWorkflowTypes": [
+		"MenuBar",
+		"Watch"
+	],
+	"WFQuickActionSurfaces": [],
+	"WFWorkflowHasShortcutInputVariables": false
+}
