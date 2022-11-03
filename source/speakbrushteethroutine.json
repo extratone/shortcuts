@@ -1,0 +1,232 @@
+{
+	"WFWorkflowMinimumClientVersionString": "0",
+	"WFWorkflowMinimumClientVersion": 0,
+	"WFWorkflowIcon": {
+		"WFWorkflowIconStartColor": -23508481,
+		"WFWorkflowIconGlyphNumber": 59440
+	},
+	"WFWorkflowClientVersion": "1303.1.1",
+	"WFWorkflowOutputContentItemClasses": [],
+	"WFWorkflowHasOutputFallback": false,
+	"WFWorkflowActions": [
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+			"WFWorkflowActionParameters": {
+				"WFInput": {
+					"Value": {
+						"Type": "ExtensionInput"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				},
+				"WFVariableName": "Input"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.count",
+			"WFWorkflowActionParameters": {
+				"Input": {
+					"Value": {
+						"VariableName": "Input",
+						"Type": "Variable"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				},
+				"WFCountType": "Items",
+				"UUID": "3D8A4E6F-FFC2-4244-BD8A-4E6FFFC2A244"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+			"WFWorkflowActionParameters": {
+				"GroupingIdentifier": "BC8D640F-54FD-48E2-8FBB-4F270B6D0A89",
+				"WFInput": {
+					"Type": "Variable",
+					"Variable": {
+						"Value": {
+							"OutputUUID": "3D8A4E6F-FFC2-4244-BD8A-4E6FFFC2A244",
+							"Type": "ActionOutput",
+							"OutputName": "Count"
+						},
+						"WFSerializationType": "WFTextTokenAttachment"
+					}
+				},
+				"WFConditionalLegacyComparisonBehavior": true,
+				"WFControlFlowMode": 0,
+				"WFNumberValue": 0,
+				"WFCondition": 2
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.getvariable",
+			"WFWorkflowActionParameters": {
+				"WFVariable": {
+					"Value": {
+						"VariableName": "Input",
+						"Type": "Variable",
+						"VariableUUID": "3ADA97BD-0A9E-43EA-965E-F680A709D59D"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				}
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+			"WFWorkflowActionParameters": {
+				"GroupingIdentifier": "BC8D640F-54FD-48E2-8FBB-4F270B6D0A89",
+				"WFControlFlowMode": 1
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.getclipboard",
+			"WFWorkflowActionParameters": {}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.conditional",
+			"WFWorkflowActionParameters": {
+				"WFControlFlowMode": 2,
+				"GroupingIdentifier": "BC8D640F-54FD-48E2-8FBB-4F270B6D0A89",
+				"UUID": "B463C94F-6F11-43A7-B463-C94F6F1153A7"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+			"WFWorkflowActionParameters": {
+				"WFInput": {
+					"Value": {
+						"OutputUUID": "B463C94F-6F11-43A7-B463-C94F6F1153A7",
+						"Type": "ActionOutput",
+						"OutputName": "If Result"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				},
+				"WFVariableName": "Clipboard"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.date",
+			"WFWorkflowActionParameters": {
+				"UUID": "26233F10-2ED9-46A8-A623-3F102ED986A8"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.adjustdate",
+			"WFWorkflowActionParameters": {
+				"WFDuration": {
+					"Value": {
+						"Unit": "min",
+						"Magnitude": 6
+					},
+					"WFSerializationType": "WFQuantityFieldValue"
+				},
+				"WFAdjustOffsetPicker": {
+					"Value": {
+						"Unit": "Minute",
+						"Value": 6,
+						"Operation": "Add"
+					},
+					"WFSerializationType": "WFTimeOffsetValue"
+				},
+				"UUID": "539CE7B2-74A5-46CF-939C-E7B274A526CF",
+				"WFAdjustOperation": "Add",
+				"WFDate": {
+					"Value": {
+						"string": "\uFFFC",
+						"attachmentsByRange": {
+							"{0, 1}": {
+								"OutputUUID": "26233F10-2ED9-46A8-A623-3F102ED986A8",
+								"Type": "ActionOutput",
+								"OutputName": "Date"
+							}
+						}
+					},
+					"WFSerializationType": "WFTextTokenString"
+				}
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.format.date",
+			"WFWorkflowActionParameters": {
+				"WFDate": {
+					"Value": {
+						"string": "\uFFFC",
+						"attachmentsByRange": {
+							"{0, 1}": {
+								"OutputUUID": "539CE7B2-74A5-46CF-939C-E7B274A526CF",
+								"Type": "ActionOutput",
+								"OutputName": "Adjusted Date"
+							}
+						}
+					},
+					"WFSerializationType": "WFTextTokenString"
+				},
+				"WFDateFormatStyle": "None",
+				"UUID": "CC6FC9A3-C924-4492-8C6F-C9A3C9240492"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.setvariable",
+			"WFWorkflowActionParameters": {
+				"WFInput": {
+					"Value": {
+						"OutputUUID": "CC6FC9A3-C924-4492-8C6F-C9A3C9240492",
+						"Type": "ActionOutput",
+						"OutputName": "Formatted Date"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				},
+				"WFVariableName": "ExpireTime"
+			}
+		},
+		{
+			"WFWorkflowActionIdentifier": "is.workflow.actions.setclipboard",
+			"WFWorkflowActionParameters": {
+				"WFInput": {
+					"Value": {
+						"VariableName": "Clipboard",
+						"Type": "Variable",
+						"VariableUUID": "D1AA5413-8498-4221-A3BA-C51A34545D4D"
+					},
+					"WFSerializationType": "WFTextTokenAttachment"
+				},
+				"WFExpirationDate": {
+					"Value": {
+						"string": "\uFFFC",
+						"attachmentsByRange": {
+							"{0, 1}": {
+								"VariableName": "ExpireTime",
+								"Type": "Variable",
+								"VariableUUID": "2A42938A-CE1C-4D5D-A5E4-B9873756CA5B"
+							}
+						}
+					},
+					"WFSerializationType": "WFTextTokenString"
+				}
+			}
+		}
+	],
+	"WFWorkflowInputContentItemClasses": [
+		"WFAppStoreAppContentItem",
+		"WFArticleContentItem",
+		"WFContactContentItem",
+		"WFDateContentItem",
+		"WFEmailAddressContentItem",
+		"WFGenericFileContentItem",
+		"WFImageContentItem",
+		"WFiTunesProductContentItem",
+		"WFLocationContentItem",
+		"WFDCMapsLinkContentItem",
+		"WFAVAssetContentItem",
+		"WFPDFContentItem",
+		"WFPhoneNumberContentItem",
+		"WFRichTextContentItem",
+		"WFSafariWebPageContentItem",
+		"WFStringContentItem",
+		"WFURLContentItem"
+	],
+	"WFWorkflowImportQuestions": [],
+	"WFWorkflowTypes": [
+		"ActionExtension"
+	],
+	"WFQuickActionSurfaces": [],
+	"WFWorkflowHasShortcutInputVariables": false
+}
